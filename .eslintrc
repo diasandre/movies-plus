@@ -24,7 +24,7 @@
       "prefer-arrow-callback": [0, { "allowNamedFunctions": true }],
       "func-names": ["error", "never"],
       "implicit-arrow-linebreak": 0,
-      "react/jsx-props-no-spreading": 1,
+      "react/jsx-props-no-spreading": 0,
       "no-use-before-define": [
         "error", {
           "functions": true,
