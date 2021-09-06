@@ -7,14 +7,9 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const FilterContainer = styled.div`
+export const Wrapper = styled.div`
   border-radius: 10px;
   background-color: #444444;
   width: 50%;
-`;
-
-export const ChartsContainer = styled.div`
-  border-radius: 10px;
-  background-color: #444444;
-  width: 50%;
+  margin: 10px;
 `;

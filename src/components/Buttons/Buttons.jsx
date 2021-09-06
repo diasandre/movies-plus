@@ -28,6 +28,7 @@ const Buttons = ({ onFilterCallback }) => (
     <div>
       {filters.map(({ label, type }) => (
         <Button
+          key={type}
           id={type}
           variant="contained"
           color="primary"

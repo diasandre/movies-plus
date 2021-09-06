@@ -12,3 +12,7 @@ export const SearchButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export const CardWrapper = styled.div`
+  padding: 10px;
+`;

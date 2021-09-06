@@ -1,8 +1,20 @@
-import axios from 'axios';
+/* eslint-disable no-console */
+/* eslint-disable space-before-function-paren */
+// import axios from 'axios';
+import { list as listActors } from './actorsService';
+import { list as listDirectors } from './directorService';
+import { list as listMovies } from './moviesService';
 
-const BASE_URL = 'https://mocha-pie.herokuapp.com';
-const BASE_API = '/api';
+// const BASE_URL = 'https://mocha-pie.herokuapp.com';
+// const BASE_API = '/api';
 
-export const save = (data) => axios.post(`${BASE_URL}${BASE_API}/`, data);
-
-export const get = (uuid) => axios.get(`${BASE_URL}${BASE_API}/${uuid}/edit`);
+export const initialLoad = async () => ({
+  directors: await listDirectors(),
+  actors: await listActors(),
+  movies: await listMovies(),
+  info: {
+    movies: 400,
+    actors: 800,
+    directors: 200,
+  },
+});
