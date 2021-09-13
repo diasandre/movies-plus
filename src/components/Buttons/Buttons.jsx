@@ -6,20 +6,24 @@ import { Wrapper } from './style';
 
 const filters = [
   {
-    label: 'Actors on same movie',
-    type: 'ACTORS_ON_SAME_MOVIE',
-  },
-  {
     label: 'By name',
     type: 'BY_NAME',
+  },
+  {
+    label: 'By actor',
+    type: 'BY_ACTOR',
   },
   {
     label: 'By director',
     type: 'BY_DIRECTOR',
   },
   {
-    label: 'Combined review note',
-    type: 'COMBINED_REVIEW_NOTE',
+    label: 'Actors on same movie',
+    type: 'ACTORS_ON_SAME_MOVIE',
+  },
+  {
+    label: 'Combined rating',
+    type: 'COMBINED_RATING',
   },
 ];
 

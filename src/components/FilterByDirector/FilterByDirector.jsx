@@ -1,3 +1,4 @@
+/* eslint-disable space-before-function-paren */
 import React, { useContext, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -5,15 +6,16 @@ import { Button, IconButton } from '@material-ui/core';
 import RestoreIcon from '@material-ui/icons/Restore';
 import { FilterWrapper, SearchButtonWrapper } from '../../styles';
 import { Context } from '../../contexts/DataContext';
+import { getMoviesByDirector } from '../../services/moviesService';
 
-const FilterByName = ({ movies }) => {
+const FilterByDirector = ({ directors }) => {
   const { setResults } = useContext(Context);
 
-  const [movie, setMovie] = useState(null);
+  const [director, setDirector] = useState(null);
 
-  const options = movies.map((item) => {
-    const { title } = item;
-    const firstLetter = title[0].toUpperCase();
+  const options = directors.map((item) => {
+    const { name } = item;
+    const firstLetter = name[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
       ...item,
@@ -24,20 +26,23 @@ const FilterByName = ({ movies }) => {
     setResults(null);
   };
 
-  const handleSearch = () => {
-    if (movie == null) return;
-    setResults([movie]);
+  const handleSearch = async () => {
+    if (director == null) return;
+    const {
+      data: { movies },
+    } = await getMoviesByDirector(director);
+    setResults(movies);
   };
 
   return (
     <FilterWrapper>
       <Autocomplete
-        id="movie-title"
+        id="director-title"
         options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
         groupBy={(option) => option.firstLetter}
-        getOptionLabel={(option) => option.title}
-        onChange={(event, value) => setMovie(value)}
-        renderInput={(params) => <TextField {...params} label="Movies" variant="outlined" />}
+        getOptionLabel={(option) => option.name}
+        onChange={(event, value) => setDirector(value)}
+        renderInput={(params) => <TextField {...params} label="Directors" variant="outlined" />}
       />
       <SearchButtonWrapper>
         <IconButton color="secondary" aria-label="Reset" onClick={reset}>
@@ -58,4 +63,4 @@ const FilterByName = ({ movies }) => {
   );
 };
 
-export default FilterByName;
+export default FilterByDirector;

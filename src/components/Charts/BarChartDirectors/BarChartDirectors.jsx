@@ -19,7 +19,7 @@ const generateData = (directors) => ({
   datasets: [
     {
       label: 'Movies',
-      data: directors.map(({ movies }) => movies),
+      data: directors.map(({ count }) => count),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -44,7 +44,7 @@ const generateData = (directors) => ({
 const BarChartDirectors = () => {
   const { directors = [] } = useContext(Context);
 
-  const data = generateData(directors.sort((a, b) => b.movies - a.movies).slice(0, 5));
+  const data = generateData(directors.sort((a, b) => b.count - a.count).slice(0, 5));
 
   return (
     <>

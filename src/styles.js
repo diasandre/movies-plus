@@ -11,6 +11,7 @@ export const FilterWrapper = styled.div`
 export const SearchButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 export const CardWrapper = styled.div`
